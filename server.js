@@ -18,5 +18,5 @@ require('./app/routing/htmlRoutes')(app);
 
 /////listener/////
 app.listen(PORT, function() {
-  console.log("appress App listening on PORT: " + PORT);
+  console.log("express App listening on PORT: " + PORT);
 });

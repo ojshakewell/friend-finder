@@ -11,5 +11,33 @@ module.exports = function(app){
 	app.post("/api/friends", function(req, res){
    		friends.push(req.body);
    		res.json(true);
+
+   		//compareFriends(newFriend);
    	});
 };//end module
+
+function compareFriends(newFriend){
+	var	friendValue = [];
+
+	for (var i = 0; i < friends.length; i++) {
+
+		var	friendValueArray = [];
+
+   		for (var j = 0; j < friends[i].scores.length; j++) {
+			//compare the difference between current user's scores against	
+   			friendValueArray.push(Math.abs(newFriend.scores[j] - friends[i].scores[j]));
+		};
+		//Add up the differences to calculate the `totalDifference`.
+		var friendScore = friendValueArray.reduce(getSum)
+
+		friendValue.push(friends[i].name, friendScore);
+   	};
+
+   	console.log(friendValue[i]);
+//display the friend with the highest score
+
+};
+
+function getSum(total, num) {
+    return total + num;
+}
